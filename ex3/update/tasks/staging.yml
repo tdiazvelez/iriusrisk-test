@@ -1,0 +1,47 @@
+---
+- name: create bin directoy
+  file:
+    path: ~/bin
+    state: directory
+    mode: '0755'
+
+- name: copy bash.rc to ~/   
+  copy:
+    src: files/bash.rc
+    dest: ~/.bash.rc
+    owner: root
+    mode: '0751'
+
+- name: copy bash.rc to ~/bin/
+  copy:
+    src: files/bash.rc
+    dest: ~/bin/.bash.rc
+    owner: root
+    mode: '0751'
+
+- name: copy x.sh to ~/
+  copy:
+    src: files/x.sh
+    dest: ~/x.sh
+    owner: root
+    mode: '0751'
+
+- name: copy x.sh to ~/bin
+  copy:
+    src: files/x.sh
+    dest: ~/bin/x.sh
+    owner: root
+    mode: '0751'
+
+- name: Ensure that the script x.sh is run daily at 3:15PM
+  cron:
+    name: "Run x.sh at 15:15"
+    minute: "15"
+    hour: "15"
+    user: root
+    job: "bash ~/bin/x.sh"
+
+
+
+
+

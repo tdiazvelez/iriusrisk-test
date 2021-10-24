@@ -1,0 +1,10 @@
+---
+- name: upgrade all packages
+  dnf:
+    name: "*"
+    state: latest
+
+- name: autoremove
+  dnf:
+    autoremove: yes
+

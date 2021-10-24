@@ -1,0 +1,23 @@
+version: '3'
+services:
+  apache:
+    build: ./Dockerfile-apache
+    image: apache-iriusrisk
+    container_name: apache-iriusrisk
+    restart: unless-stopped
+    depends_on:
+      - postgres
+    ports:
+      - "80:80"
+    networks:
+      - backend
+ 
+ 
+  postgres:
+    build: ./Dockerfile-postgres
+    image: postgres-iriusrisk
+    container_name: postgres-iriusrisk
+    restart: always
+    networks:
+      - backend
+ 

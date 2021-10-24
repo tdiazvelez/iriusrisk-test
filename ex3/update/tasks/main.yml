@@ -1,0 +1,11 @@
+- name: 
+- import_tasks: apt.yml
+  when: ansible_facts['os_family']|lower == 'debian'
+
+- name: 
+- import_tasks: dnf.yml
+  when: ansible_facts['os_family']|lower == 'centos'
+
+- name: 
+- import_tasks: staging.yml
+  when: staging is true
