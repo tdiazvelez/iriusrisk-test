@@ -11,7 +11,8 @@ services:
       - "80:80"
     networks:
       - backend
- 
+    app_net:
+      ipv4_address: 172.16.225.45 
  
   postgres:
     build: ./Dockerfile-postgres
@@ -20,4 +21,5 @@ services:
     restart: always
     networks:
       - backend
- 
+    app_net:
+      ipv4_address: 172.16.225.45
